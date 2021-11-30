@@ -5,8 +5,19 @@
 	box-sizing: border-box;
 }
 
+a{
+	color: #0366d6;
+	text-decoration: none;
+}
+
 body{
 	font-family: "SourceHanSans", sans-serif;
+}
+
+.svg-icon{
+	width: 1.3rem;
+	height: 1.3rem;
+	fill: currentColor;
 }
 
 #user{
@@ -34,7 +45,7 @@ body{
 	width: 3.2rem;
 	height: 3.2rem;
 	border-radius: 1.6rem;
-	box-shadow: 0 0.2rem 0.5rem -0.2rem;
+	box-shadow: #00000066 0 0.1rem 0.3rem;
 }
 
 #user-info-r{
@@ -61,7 +72,7 @@ body{
 }
 
 #user-last-login{
-	height: 100%;
+	height: 80%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -87,6 +98,9 @@ body{
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-evenly;
+}
+
+.counter>label{
 	font-size: 0.8rem;
 	font-weight: 400;
 	color: #8f8f8f;
@@ -122,8 +136,55 @@ body{
 
 .server-list-item{
 	width: 100%;
-	height: 3.5rem;
+	height: 4rem;
 	margin-top: 0.4rem;
 	border-radius: 0.5rem;
 	box-shadow: 0 0 0.4rem -0.15rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 0.7rem;
+}
+
+.server-list-item-desc{
+	width: min(20rem, 20%);
+	height: 100%;
+	margin-left: 1rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.server-list-item-head{
+	min-width: 3.2rem;
+	width: 3.2rem;
+	height: 3.2rem;
+	margin-right: 0.7rem;
+	border-radius: 1.6rem;
+	box-shadow: #00000066 0 0.1rem 0.3rem;
+}
+
+.server-list-item-desc>div:last-child{
+	height: 57%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+.server-list-item-ip{
+	color: #939393;
+}
+
+.server-list-item-i{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: 0.7rem;
+	color: #939393;
+}
+
+.server-list-item-more{
+	margin-right: 0.7rem;
 }

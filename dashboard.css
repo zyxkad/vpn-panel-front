@@ -12,6 +12,12 @@ body{
 	font-family: "SourceHanSans", sans-serif;
 }
 
+.svg-icon{
+	width: 1.3rem;
+	height: 1.3rem;
+	fill: currentColor;
+}
+
 #header{
 	width: var(--article-width);
 	height: 4rem;
@@ -82,6 +88,17 @@ body{
 	padding-left: 1.3rem;
 	background-color: #041527;
 	color: #a6acb3;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.side-nav-list>h4>.side-nav-list-sign{
+	transform: rotate(0deg);
+}
+
+.side-nav-list:not([nav-select])>h4>.side-nav-list-sign{
+	transform: rotate(90deg);
 }
 
 .side-nav-list>ul{

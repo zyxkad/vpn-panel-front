@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>Dashboard</title>
-		<link rel="stylesheet" type="text/css" href="./static/lib/font-SourceHanSans.css"/>
+		<link rel="stylesheet" type="text/css" href="./static/font/syht/font.css"/>
 		<link rel="stylesheet" type="text/css" href="./dashboard_dashboard.css"/>
 	</head>
 	<body>
@@ -23,20 +23,24 @@
 		</div>
 		<section id="counter-box">
 			<div class="counter">
-				服务器总数
+				<label for="server-total-count">服务器总数</label>
 				<span id="server-total-count">234</span>
 			</div>
 			<div class="counter">
-				VPN用户总数
+				<label for="vpn-user-total-count">VPN用户总数</label>
 				<span id="vpn-user-total-count">3341</span>
 			</div>
 			<div class="counter">
-				在线服务器
+				<label for="online-server-count">在线服务器</label>
 				<span id="online-server-count">230</span>
 			</div>
 			<div class="counter">
-				离线服务器
+				<label for="offline-server-count">离线服务器</label>
 				<span id="offline-server-count">4</span>
+			</div>
+			<div class="counter">
+				<label for="online-server-count">在线用户</label>
+				<span id="online-server-count">230</span>
 			</div>
 		</section>
 		<section id="server-list">
@@ -44,8 +48,84 @@
 				<h3>服务器列表</h3>
 			</header>
 			<div id="server-list-box">
-				<div class="server-list-item">TODO</div>
-				<div class="server-list-item">TODO</div>
+				<div class="server-list-item">
+					<div class="server-list-item-desc">
+						<img class="server-list-item-head" src="https://modao.cc/uploads5/images/7694/76945034/v2_r3ayzx.png" alt="server-list-item-head"/>
+						<div>
+							<span class="server-list-item-name">vpn-01</span>
+							<span class="server-list-item-ip">127.123.45.67</span>
+						</div>
+					</div>
+					<div class="server-list-item-i">
+						<label>运营商</label>
+						<span class="server-list-item-operator">联通</span>
+					</div>
+					<div class="server-list-item-i">
+						<label>用户数</label>
+						<span class="server-list-item-user-total">12</span>
+					</div>
+					<div class="server-list-item-i">
+						<label>上线时间</label>
+						<span class="server-list-item-online-date">2017-01-02 23:12</span>
+					</div>
+					<div class="server-list-item-i">
+						<label>已使用流量</label>
+						<span>
+							上行:<span class="server-list-item-used-upload">13.25GB</span> /
+							下行:<span class="server-list-item-used-download">26.31GB</span>
+						</span>
+					</div>
+					<div class="server-list-item-i">
+						<label>在线用户</label>
+						<span class="server-list-item-online-user">11</span>
+					</div>
+					<div class="server-list-item-more">
+						<a class="server-list-item-more-desc" href="javascript:void(0)">详情</a> |
+						<a class="server-list-item-more-more" href="javascript:void(0)">
+							更多
+							<svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" viewBox="64 64 896 896" style="width:0.7rem;height:0.7rem;"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg>
+						</a>
+					</div>
+				</div>
+				<div class="server-list-item">
+					<div class="server-list-item-desc">
+						<img class="server-list-item-head" src="https://modao.cc/uploads5/images/7694/76945035/v2_r3az0q.png" alt="server-list-item-head"/>
+						<div>
+							<span class="server-list-item-name">vpn-02</span>
+							<span class="server-list-item-ip">13.164.163.14</span>
+						</div>
+					</div>
+					<div class="server-list-item-i">
+						<label>运营商</label>
+						<span class="server-list-item-operator">移动</span>
+					</div>
+					<div class="server-list-item-i">
+						<label>用户数</label>
+						<span class="server-list-item-user-total">31</span>
+					</div>
+					<div class="server-list-item-i">
+						<label>上线时间</label>
+						<span class="server-list-item-online-date">4444-11-11 11:11</span>
+					</div>
+					<div class="server-list-item-i">
+						<label>已使用流量</label>
+						<span>
+							上行:<span class="server-list-item-used-upload">12.34GB</span> /
+							下行:<span class="server-list-item-used-download">98.76TB</span>
+						</span>
+					</div>
+					<div class="server-list-item-i">
+						<label>在线用户</label>
+						<span class="server-list-item-online-user">9721</span>
+					</div>
+					<div class="server-list-item-more">
+						<a class="server-list-item-more-desc" href="javascript:void(0)">详情</a> |
+						<a class="server-list-item-more-more" href="javascript:void(0)">
+							更多
+							<svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" viewBox="64 64 896 896" style="width:0.7rem;height:0.7rem;"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg>
+						</a>
+					</div>
+				</div>
 			</div>
 		</section>
 		<script src="./jquery-3.6.0.min.js"></script>
