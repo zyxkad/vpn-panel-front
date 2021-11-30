@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>VPF-Dashboard</title>
+		<link rel="stylesheet" type="text/css" href="./static/lib/font-SourceHanSans.css"/>
+		<link rel="stylesheet" type="text/css" href="./dashboard.css"/>
+	</head>
+	<body>
+		<header id="header">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="64 64 896 896" style="width:1.3rem;height:1.3rem;"><path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM142.4 642.1L298.7 519a8.84 8.84 0 0 0 0-13.9L142.4 381.9c-5.8-4.6-14.4-.5-14.4 6.9v246.3a8.9 8.9 0 0 0 14.4 7z"></path></svg>
+			<h1 id="header-title"></h1>
+		</header>
+		<div id="side">
+			<header id="side-header">
+				<img id="side-header-ico" src="./favicon.ico" alt="ico"/>
+				<h2>Ant Design Pro</h2>
+			</header>
+			<nav id="side-nav">
+				<ul>
+					<li class="side-nav-list">
+						<h4>
+							系统总览
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width:1.3rem;height:1.3rem;fill:#fff;"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path></svg>
+						</h4>
+						<ul>
+							<li class="side-nav-link" page-id="dashboard">仪表盘</li>
+							<li class="side-nav-link" page-id="room-set">房间管理</li>
+							<li class="side-nav-link" page-id="room-data">房间直播数据</li>
+							<li class="side-nav-link" page-id="TODO1">稿件数据管理</li>
+							<li class="side-nav-link" page-id="TODO2">用户数据管理</li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<article id="body"></article>
+		<script src="./jquery-3.6.0.min.js"></script>
+		<script src="./dashboard.js"></script>
+	</body>
+</html>

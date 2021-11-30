@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Login</title>
+		<link rel="stylesheet" type="text/css" href="./static/lib/font-SourceHanSans.css"/>
+		<link rel="stylesheet" type="text/css" href="./index.css"/>
+	</head>
+	<body>
+		<form id="login-box">
+			<h1>登录</h1>
+			<div class="login-form-item">
+				<label for="login-username">账号:</label>
+				<input id="login-username" class="login-form-input" type="text" placeholder="请输入账号" />
+			</div>
+			<div class="login-form-item">
+				<label for="login-password">密码:</label>
+				<input id="login-password" class="login-form-input" type="password" placeholder="请输入密码" />
+			</div>
+			<input id="login-submit" type="submit" value="立即登录" />
+			<div id="login-option-box">
+				<span>
+					<input id="login-remember" type="checkbox" checked >
+					<label for="login-remember">记住密码</label>
+				</span>
+				<a href="./forgotpwd.html">忘记密码?</a>
+			</div>
+		</form>
+		<script src="./static/lib/cryptoJS/rollups/sha256.js"></script>
+		<script src="./jquery-3.6.0.min.js"></script>
+		<script src="./index.js"></script>
+	</body>
+</html>
