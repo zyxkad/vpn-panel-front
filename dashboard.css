@@ -1,21 +1,8 @@
 
-*{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-
 body{
 	--nav-width: min(15rem, 30%);
 	--article-width: calc(100% - var(--nav-width));
 	background-color: #f4f4f4;
-	font-family: "SourceHanSans", sans-serif;
-}
-
-.svg-icon{
-	width: 1.3rem;
-	height: 1.3rem;
-	fill: currentColor;
 }
 
 #header{
