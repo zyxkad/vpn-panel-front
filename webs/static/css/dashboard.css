@@ -54,6 +54,7 @@ body{
 #side-nav{
 	width: 100%;
 	font-weight: 600;
+	user-select: none;
 }
 
 #side-nav ul{

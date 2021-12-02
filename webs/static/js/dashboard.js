@@ -54,7 +54,7 @@ const PartData = (function(){
 PartData({
 	id: "dashboard",
 	title: "仪表盘",
-	body: `<iframe src="./dashboard_dashboard.html" style="width:100%;height:100%;border:none;"></iframe>`
+	body: `<iframe src="/dashboard_dashboard" style="width:100%;height:100%;border:none;"></iframe>`
 });
 
 PartData({
