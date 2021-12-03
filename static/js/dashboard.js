@@ -10,12 +10,13 @@ const PartData = (function(){
 	const $header_title = $('#header-title');
 	const $article = $('#body');
 
-	function _Page({id, title=null, body='', assets=null, onload=null, onunload=null}){
+	function _Page({id, title=null, body='', assets=null, onload=null, onready=null, onunload=null}){
 		this.id = id;
 		this.title = title || this.id;
 		this.body = body;
 		this.assets = assets;
 		this._onload = onload;
+		this._onready = onready;
 		this._onunload = onunload;
 	}
 
@@ -23,14 +24,14 @@ const PartData = (function(){
 		if(this.assets){
 			if(this.assets.css){
 				for(let url of this.assets.css){
-					if($HEAD.children('link[href=' + window.escape(url) + ']').length === 0){
-						$HEAD.append($(`<link rel="stylesheet" type="text/css"/>`).prop('href', url).attr('k-part-id', this.id));
+					if($HEAD.children('link[href="' + window.escape(url) + '"]').length === 0){
+						$HEAD.append($(`<link rel="stylesheet" type="text/css"/>`).prop('href', url).attr('k-tmp-part-id', this.id));
 					}
 				}
 			}
 			if(this.assets.js){
 				for(let url of this.assets.js){
-					$BODY.append($(`<script></script>`).prop('src', url).attr('k-part-id', this.id));
+					$BODY.append($(`<script></script>`).prop('src', url).attr('k-tmp-part-id', this.id));
 				}
 			}
 		}
@@ -39,10 +40,13 @@ const PartData = (function(){
 		}
 		$header_title.text(this.title);
 		$article.html(this.body);
+		if(this._onready){
+			this._onready();
+		}
 	}
 
 	_Page.prototype.unload = function(){
-		$('*[k-part-id=' + window.escape(this.id) + ']').remove();
+		$('*[k-tmp-part-id=' + window.escape(this.id) + ']').remove();
 		if(this._onunload){
 			this._onunload();
 		}
@@ -82,7 +86,7 @@ function onloadPart(){
 	var navl, part;
 	var hash = window.location.hash.substring(1);
 	if(hash){
-		part = PartData.get((navl = navls.filter('[page-id=' + window.escape(hash) + ']')).attr("page-id"));
+		part = PartData.get((navl = navls.filter('[page-id="' + hash + '"]')).attr("page-id"));
 	}
 	if(!hash || !part){
 		part = PartData.get((navl = navls.first()).attr("page-id"));

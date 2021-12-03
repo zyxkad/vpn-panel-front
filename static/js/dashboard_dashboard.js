@@ -7,9 +7,9 @@ const PAGE = window.Page({
 	body: `
 <div id="user">
 	<div id="user-info">
-		<img id="user-head" src="https://modao.cc/uploads4/images/6841/68419283/v2_qvovp0.jpg"/>
+		<img id="user-head"/>
 		<div id="user-info-r">
-			<span id="user-name">username</span>
+			<span id="user-name"></span>
 			<span id="user-welecome"></span>
 		</div>
 	</div>
@@ -126,7 +126,8 @@ const PAGE = window.Page({
 	assets: {
 		css: ["/static/font/syht/font.css", "/static/css/dashboard_dashboard.css"]
 	},
-	onload: function(){
+	onready: function(){
+		$('#user-name').text(window.GLOBAL.USERNAME);
 		const $user_welecome = $('#user-welecome');
 		const $server_total_count = $('#server-total-count');
 		const $online_server_count = $('#online-server-count');
