@@ -1,4 +1,6 @@
 
+'use strict';
+
 (function(){
 
 const PAGE = window.Page({
