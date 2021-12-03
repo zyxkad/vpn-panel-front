@@ -26,7 +26,7 @@ $(document).ready(function(){
 			url: "/api/login",
 			data: {
 				"username": username,
-				"password": password
+				"password": sha256pwd
 			},
 			success: function(res){
 				if(res.status === 'ok'){

@@ -3,35 +3,54 @@
 
 (function(){
 
+const $HEAD = $(document.head);
+const $BODY = $(document.body);
+
 const PartData = (function(){
 	const $header_title = $('#header-title');
 	const $article = $('#body');
 
-	function _PartData({id, title=null, body='', onload=null, onunload=null}){
+	function _Page({id, title=null, body='', assets=null, onload=null, onunload=null}){
 		this.id = id;
 		this.title = title || this.id;
 		this.body = body;
-		this.onload = onload;
-		this.onunload = onunload;
+		this.assets = assets;
+		this._onload = onload;
+		this._onunload = onunload;
 	}
 
-	_PartData.prototype.load = function(){
-		if(this.onload){
-			this.onload();
+	_Page.prototype.load = function(){
+		if(this.assets){
+			if(this.assets.css){
+				for(let url of this.assets.css){
+					if($HEAD.children('link[href=' + window.escape(url) + ']').length === 0){
+						$HEAD.append($(`<link rel="stylesheet" type="text/css"/>`).prop('href', url).attr('k-part-id', this.id));
+					}
+				}
+			}
+			if(this.assets.js){
+				for(let url of this.assets.js){
+					$BODY.append($(`<script></script>`).prop('src', url).attr('k-part-id', this.id));
+				}
+			}
+		}
+		if(this._onload){
+			this._onload();
 		}
 		$header_title.text(this.title);
 		$article.html(this.body);
 	}
 
-	_PartData.prototype.unload = function(){
-		if(this.onunload){
-			this.onunload();
+	_Page.prototype.unload = function(){
+		$('*[k-part-id=' + window.escape(this.id) + ']').remove();
+		if(this._onunload){
+			this._onunload();
 		}
 		$header_title.text('');
 		$article.html('');
 	}
 
-	const part404 = new _PartData({
+	const part404 = new _Page({
 		id: '404',
 		title: '404 Not found',
 		onload: function(){
@@ -48,20 +67,15 @@ const PartData = (function(){
 		return PartData._part_map[id] || part404;
 	}
 
+	window.Page = PartData;
 	return PartData;
 })();
 
-PartData({
-	id: "dashboard",
-	title: "仪表盘",
-	body: `<iframe src="/dashboard_dashboard" style="width:100%;height:100%;border:none;"></iframe>`
-});
-
-PartData({
-	id: "room-set",
-	title: "房间管理",
-	body: `TODO: 房间管理`
-});
+// PartData({
+// 	id: "room-set",
+// 	title: "房间管理",
+// 	body: `TODO: 房间管理`
+// });
 
 function onloadPart(){
 	var navls = $('.side-nav-link');
@@ -74,7 +88,10 @@ function onloadPart(){
 		part = PartData.get((navl = navls.first()).attr("page-id"));
 		window.location.hash = navl.attr("page-id");
 	}
-	$('.side-nav-link[nav-current]').removeAttr('nav-current');
+	{
+		let dp = PartData.get($('.side-nav-link[nav-current]').removeAttr('nav-current').attr('page-id'));
+		(dp && dp.id !== '404') && dp.unload();
+	}
 	navl.attr('nav-current', '').parents('.side-nav-list:last-child').attr('nav-select', '');
 	part.load();
 }
@@ -91,6 +108,10 @@ $(document).ready(function(){
 
 	onloadPart();
 	$(window).on('popstate', onloadPart);
+	$(window).on('unload', function(){
+		let dp = PartData.get($('.side-nav-link[nav-current]').attr('page-id'));
+		(dp && dp.id !== '404') && dp.unload();
+	});
 
 	$('.side-nav-link').click(function(){
 		var $this = $(this);
@@ -99,7 +120,10 @@ $(document).ready(function(){
 		}
 		var pid = $this.attr("page-id");
 		var part = PartData.get(pid);
-		$('.side-nav-link[nav-current]').removeAttr('nav-current');
+		{
+			let dp = PartData.get($('.side-nav-link[nav-current]').removeAttr('nav-current').attr('page-id'));
+			(dp && dp.id !== '404') && dp.unload();
+		}
 		$this.attr('nav-current', '');
 		window.history.pushState(null, null, '#' + pid);
 		part.load();
