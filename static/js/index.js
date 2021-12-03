@@ -29,36 +29,30 @@ $(document).ready(function(){
 				"password": password
 			},
 			success: function(res){
-				if(res.data){
-					if(res.data.status === 'ok'){
-						window.location = '/dashboard';
-						return;
-					}
-					if(res.data.status === 'error'){
-						switch(res.data.error){
-							case "PasswordError":{
-								$login_password.select();
-							}break;
+				if(res.status === 'ok'){
+					window.location = '/dashboard';
+					return;
+				}
+				if(res.status === 'error'){
+					switch(res.error){
+						case "PasswordError":{
+							$login_password.select();
+							alert('帐号或密码错误');
+						}break;
+						default:{
+							alert(res.errorMessage);
 						}
-						alert(res.data.errorMessage);
-						return;
 					}
+					return;
 				}
 				console.error('Unknown response:', res);
-				alert('内部服务器错误');
+				alert('内部服务器错误: 未知响应体');
 			},
 			failed: function(res){
 				console.error('Failed response:', res);
 				alert('内部服务器错误');
 			}
 		});
-		// if(!(username === 'admin' && sha256pwd === '466aaf2c87dc07124712dbd9c4f9780c140fe7600f049d4688210c8e5f5aa16c'/* admi730 */)){
-		// 	console.log(username, 'try log with wrong password', sha256pwd);
-		// 	alert('账号或密码错误!');
-		// 	$login_password.select();
-		// 	return;
-		// }
-		// window.location = '/dashboard';
 	});
 });
 
