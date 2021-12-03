@@ -59,7 +59,7 @@ const PartData = (function(){
 	});
 
 	function PartData(obj){
-		return PartData._part_map[obj.id] = new _PartData(obj);
+		return PartData._part_map[obj.id] = new _Page(obj);
 	}
 
 	PartData._part_map = {};
