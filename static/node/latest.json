@@ -1,0 +1,14 @@
+{
+	"version": "1.0.2",
+	"lastmod": "2021-12-05 05:26:47 -0700",
+	"url": {
+		"windows": "/static/node/node-windows-v1.0.1.exe",
+		"linux": "/static/node/node-linux-v1.0.1",
+		"macos": "/static/node/node-macos-v1.0.1",
+		"source": {
+			"type": "git",
+			"url": "https://github.com/older-fox/vpn-panel-node.git/",
+			"update": ["src", "index.js", "package.json", "package-lock.json"]
+		}
+	}
+}
